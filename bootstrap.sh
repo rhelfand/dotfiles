@@ -20,3 +20,9 @@ mv ~/.bash_profile ~/.bash_profile.ORIG
 mv ~/.bashrc ~/.bashrc.ORIG
 stow bash
 stow bc
+stow vim
+
+# Setup vim plugins.  First install Vundle:
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+echo "Launch vim and run ':PluginInstall' to configure Vim plugins."
+echo ""

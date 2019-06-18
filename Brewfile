@@ -5,13 +5,17 @@ cask_args appdir: '/Applications'
 tap 'caskroom/homebrew-cask' || true
 
 brew 'tree'
-brew 'python'
+brew 'python3'
 brew 'pipenv'
 brew 'curl'
+brew 'coreutils'
 brew 'openssl'
 brew 'stow'
 brew 'git'
 brew 'bash-completion'
+brew 'kubernetes-cli'
+brew 'vim'
+brew 'shellcheck'
 
 # Casks
 cask 'google-chrome'

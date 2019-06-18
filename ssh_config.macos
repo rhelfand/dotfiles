@@ -1,0 +1,11 @@
+UseKeychain yes
+AddKeysToAgent yes
+IdentityFile ~/.ssh/id_rsa
+IdentityFile ~/.ssh/id_rsa_home
+ServerAliveInterval 300
+ServerAliveCountMax 2
+
+host *
+  ForwardAgent yes
+  ForwardX11 yes
+  ForwardX11Trusted yes

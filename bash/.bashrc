@@ -29,14 +29,16 @@ alias checknagios="sudo /usr/sbin/nagios -v /etc/nagios/nagios.cfg"
 alias p4diff="P4DIFF=vimdiff p4 diff"
 alias findbigfiles="find . -size +$1k -exec du -h {} \;"
 alias sr="sudo ssh $1"
+alias dstop='docker stop $(docker ps -a -q)'
+alias dremove='docker rm $(docker ps -a -q)'
 
 # Crazy alias to setup tmux / iTerm2 / ssh
 alias ta='export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock; LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH; ($HOME/local/bin/tmux ls | grep -vq attached && $HOME/local/bin/tmux -CC attach) || $HOME/local/bin/tmux -CC'
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin"
 
-# Git path completion
+# Git path completion - Need to brew install git and bash-completion which we should be doing
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # Source the stuff in bash_env

@@ -16,6 +16,7 @@ brew 'bash-completion'
 brew 'kubernetes-cli'
 brew 'vim'
 brew 'shellcheck'
+brew 'neofetch'
 
 # Casks
 cask 'google-chrome'

@@ -46,3 +46,5 @@ for file in ~/bash_env/*
   do
     . $file
   done
+
+[ -f $(which neofetch) ] && neofetch

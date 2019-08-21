@@ -1,6 +1,9 @@
 PATH=${PATH}:~/scripts
 PATH=${PATH}:/usr/local/opt/node@6/bin
-PATH=${PATH}:~/Library/Python/3.6/bin/
+
+# include pyenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 export PATH
 

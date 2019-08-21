@@ -17,6 +17,8 @@ brew 'kubernetes-cli'
 brew 'vim'
 brew 'shellcheck'
 brew 'neofetch'
+brew 'pyenv'
+brew 'pyenv-virtualenv'
 
 # Casks
 cask 'google-chrome'

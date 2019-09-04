@@ -35,6 +35,10 @@ alias dremove='docker rm $(docker ps -a -q)'
 # Crazy alias to setup tmux / iTerm2 / ssh
 alias ta='export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock; LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH; ($HOME/local/bin/tmux ls | grep -vq attached && $HOME/local/bin/tmux -CC attach) || $HOME/local/bin/tmux -CC'
 
+# autocompletion (see https://superuser.com/questions/288714/bash-autocomplete-like-zsh)
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+
 # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin"
 

@@ -21,6 +21,7 @@ mv ~/.bashrc ~/.bashrc.ORIG
 stow bash
 stow bc
 stow vim
+stow git
 
 # Setup vim plugins.  First install Vundle:
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

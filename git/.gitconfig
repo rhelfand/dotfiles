@@ -1,0 +1,44 @@
+[user]
+	email = rhelfand@athenahealth.com
+	name = Ross Helfand
+[core]
+	excludesfile = /Users/rhelfand/.gitignore_global
+	pager = less -r
+
+[diff]
+
+    # Detect copies as well as renames
+    renames = copies
+    tool = diffmerge
+    # Enable an experimental heuristic that shifts the hunk boundary in an
+    # attempt to make the resulting patch easier to read.
+    indentHeuristic = true
+
+[diff "bin"]
+
+    # Use `hexdump` to diff binary files
+    textconv = hexdump -v -C
+
+[difftool]
+
+    prompt = false
+
+[difftool "diffmerge"]
+
+    cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+
+[merge]
+
+    # Include summaries of merged commits in newly created merge commit messages
+    log = true
+    tool = diffmerge
+
+[mergetool]
+
+    keepBackup = false
+    prompt = false
+
+[mergetool "diffmerge"]
+
+    cmd = diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+    trustExitCode = true

@@ -19,6 +19,7 @@ brew 'shellcheck'
 brew 'neofetch'
 brew 'pyenv'
 brew 'pyenv-virtualenv'
+brew 'bash'
 
 # Casks
 cask 'google-chrome'

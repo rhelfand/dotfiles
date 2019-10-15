@@ -1,6 +1,15 @@
 # User specific aliases and functions
 
-PS1="\u@\h:\w>"
+## Use color in my prompt because I think it's cool
+case "$TERM" in
+    xterm|xterm-color|*-256color) color_prompt=yes;;
+esac
+
+if [ "$color_prompt" = yes ]; then
+    PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] '
+else
+    PS1="\u@\h:\w>"
+fi
 
 ## History shenanigans:
 HISTSIZE=20000

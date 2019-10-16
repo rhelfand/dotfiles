@@ -48,8 +48,8 @@ alias ta='export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock; LD_LIBRARY_PATH=$HOME/l
 
 # autocompletion (see https://superuser.com/questions/288714/bash-autocomplete-like-zsh)
 bind 'set show-all-if-ambiguous on'
-bind 'set match-hidden-files off'
 bind 'TAB:menu-complete'
+bind 'set menu-complete-display-prefix on'
 
 # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin"

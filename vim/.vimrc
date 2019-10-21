@@ -1,4 +1,4 @@
-"" needed vor vundle
+"" needed for vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -26,6 +26,9 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" Settings I like
+let mapleader = ","
+
 colorscheme default
 set nohlsearch       ""don't highlight searches
 set background=dark  ""make text look prettier
@@ -36,6 +39,7 @@ set paste            ""don't auto-indent
 set laststatus=2     ""the statusbar at the bottom
 set tabstop=4        ""default is 8
 set wildmenu         ""tab completes for searching
+set nu               ""turn on line numbers
 
 "" This was too much, took too long under p4
 ""set path+=**         ""let vim search in to subfolders
@@ -43,6 +47,6 @@ set wildmenu         ""tab completes for searching
 let g:netrw_banner=0     ""disable the netrw banner
 let g:netrw_liststyle=3  ""tree view
 
-nmap \l :setlocal number!<CR>    ""line numbers
-nmap \o :set paste!<CR>          ""toggles on auto=indent
-nmap \cc :set cursorcolumn       ""visually show the column
+nmap <Leader>l :set nu! <ESC>
+nmap <Leader>o :set paste! <ESC>
+nmap <Leader>cc :set cursorcolumn! <ESC>

@@ -1,5 +1,20 @@
 # User specific aliases and functions
 
+## Function to nicely append or prepend PATH.  I stole this from google
+pathmunge () {
+        if ! echo "$PATH" | grep -Eq "(^|:)$1($|:)" ; then
+           if [ "$2" = "after" ] ; then
+              PATH="$PATH:$1"
+           else
+              PATH="$1:$PATH"
+           fi
+        fi
+}
+
+pathmunge ~/scripts after
+pathmunge /usr/local/opt/node@6/bin after
+pathmunge ~/.rvm/bin after
+
 ## Use color in my prompt because I think it's cool
 case "$TERM" in
     xterm|xterm-color|*-256color) color_prompt=yes;;
@@ -43,24 +58,29 @@ alias dremove='docker rm $(docker ps -a -q)'
 alias gla='git log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --branches --remotes'
 alias gl='git log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
 
-# Crazy alias to setup tmux / iTerm2 / ssh
+## Crazy alias to setup tmux / iTerm2 / ssh
 alias ta='export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock; LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH; ($HOME/local/bin/tmux ls | grep -vq attached && $HOME/local/bin/tmux -CC attach) || $HOME/local/bin/tmux -CC'
 
-# autocompletion (see https://superuser.com/questions/288714/bash-autocomplete-like-zsh)
+## autocompletion (NOTE: only works with newer version of bash)
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 bind 'set menu-complete-display-prefix on'
 
-# Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# Git path completion - Need to brew install git and bash-completion which we should be doing
+## Git path completion - Need to brew install git and bash-completion which we should be doing
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-# Source the stuff in bash_env
+## Source the stuff in bash_env
 for file in ~/bash_env/*
   do
     . $file
   done
 
+## rvm things
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+## pyenv things
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+## Cool thing that shows some system stats
 [ -f $(which neofetch) ] && neofetch

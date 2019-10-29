@@ -40,6 +40,7 @@ set laststatus=2     ""the statusbar at the bottom
 set tabstop=4        ""default is 8
 set wildmenu         ""tab completes for searching
 set nu               ""turn on line numbers
+set nu rnu           ""turn on relative line numbers
 
 "" This was too much, took too long under p4
 ""set path+=**         ""let vim search in to subfolders
@@ -48,5 +49,6 @@ let g:netrw_banner=0     ""disable the netrw banner
 let g:netrw_liststyle=3  ""tree view
 
 nmap <Leader>l :set nu! <ESC>
+nmap <Leader>rl :set nu rnu! <ESC>
 nmap <Leader>o :set paste! <ESC>
 nmap <Leader>cc :set cursorcolumn! <ESC>

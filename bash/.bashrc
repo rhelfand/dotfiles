@@ -27,10 +27,12 @@ else
 fi
 
 ## History shenanigans:
-HISTSIZE=20000
-HISTFILESIZE=20000
+[[ -d ~/log ]] || mkdir ~/log
+HISTSIZE=3000
 shopt -s histappend
-PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
+# Testing a different method, as re-reading history starts to get noticably slow after a while.
+# PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
+PROMPT_COMMAND='echo "$(date '+%Y-%m-%d.%H:%M:%S') $(pwd) $(history 1)" >> ~/log/bash-history-$(date '+%Y-%m-%d').log'
 
 ## Misc:
 set -o vi

@@ -83,7 +83,6 @@ for file in ~/bash_env/*
 ## pyenv things
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 ## Cool thing that shows some system stats
 [ -f $(which neofetch) ] && neofetch

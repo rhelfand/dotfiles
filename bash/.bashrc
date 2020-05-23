@@ -72,15 +72,6 @@ bind 'set menu-complete-display-prefix on'
 ## TODO Make my bashrc more OS agnostic maybe?
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-## Source the stuff in bash_env
-[[ -d ~/bash_env/ ]] || mkdir ~/bash_env/
-if [ ! -z "$(ls -A ~/bash_env/)" ] ; then
-  for file in ~/bash_env/*
-    do
-      . $file
-    done
-fi
-
 ## rvm things
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 

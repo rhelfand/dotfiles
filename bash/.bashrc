@@ -69,20 +69,26 @@ bind 'TAB:menu-complete'
 bind 'set menu-complete-display-prefix on'
 
 ## Git path completion - Need to brew install git and bash-completion which we should be doing
+## TODO Make my bashrc more OS agnostic maybe?
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 ## Source the stuff in bash_env
-for file in ~/bash_env/*
-  do
-    . $file
-  done
+[[ -d ~/bash_env/ ]] || mkdir ~/bash_env/
+if [ ! -z "$(ls -A ~/bash_env/)" ] ; then
+  for file in ~/bash_env/*
+    do
+      . $file
+    done
+fi
 
 ## rvm things
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 ## pyenv things
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if [ -x "$(command -v pyenv)" ] ; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
 
 ## Cool thing that shows some system stats
-[ -f $(which neofetch) ] && neofetch
+[[ -x $(command -v neofetch) ]] && neofetch

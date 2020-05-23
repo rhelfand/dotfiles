@@ -15,6 +15,7 @@ pathmunge ~/scripts after
 pathmunge /usr/local/opt/node@6/bin after
 pathmunge ~/.rvm/bin after
 
+
 ## Use color in my prompt because I think it's cool
 case "$TERM" in
     xterm|xterm-color|*-256color) color_prompt=yes;;
@@ -26,6 +27,7 @@ else
     PS1="\u@\h:\w>"
 fi
 
+
 ## History shenanigans:
 [[ -d ~/log ]] || mkdir ~/log
 HISTSIZE=3000
@@ -34,9 +36,9 @@ shopt -s histappend
 # PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
 PROMPT_COMMAND=' history -a; history -n; echo "$(date '+%Y-%m-%d.%H:%M:%S') $(pwd) $(history 1)" >> ~/log/bash-history-$(date '+%Y-%m').log'
 
-## Misc:
-set -o vi
 
+## Misc things that I like:
+set -o vi
 LESS="-XF"
 BC_ENV_ARGS=$HOME/.bcrc
 
@@ -60,26 +62,45 @@ alias dremove='docker rm $(docker ps -a -q)'
 alias gla='git log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --branches --remotes'
 alias gl='git log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
 
+
 ## Crazy alias to setup tmux / iTerm2 / ssh
 alias ta='export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock; LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH; ($HOME/local/bin/tmux ls | grep -vq attached && $HOME/local/bin/tmux -CC attach) || $HOME/local/bin/tmux -CC'
+
+
+## Things that are really only specific to athenahealth
+export P4PORT=perforce.athenahealth.com:1666
+export P4CLIENT=rhelfand-mbp15
+export P4EDITOR=vim
+export AWS_PROFILE=saml
+
+alias b='ssh bastion100.athenahealth.com'
+alias cdpuppet='cd ~/p4/quicksync/puppet/'
+
+# This is from athena bitbucket
+export PATH=$PATH:~/docker-utils/bin
+
 
 ## autocompletion (NOTE: only works with newer version of bash)
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 bind 'set menu-complete-display-prefix on'
 
+
 ## Git path completion - Need to brew install git and bash-completion which we should be doing
 ## TODO Make my bashrc more OS agnostic maybe?
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
+
 ## rvm things
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
 
 ## pyenv things
 if [ -x "$(command -v pyenv)" ] ; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
+
 
 ## Cool thing that shows some system stats
 [[ -x $(command -v neofetch) ]] && neofetch

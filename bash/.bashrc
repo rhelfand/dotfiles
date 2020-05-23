@@ -76,9 +76,6 @@ export AWS_PROFILE=saml
 alias b='ssh bastion100.athenahealth.com'
 alias cdpuppet='cd ~/p4/quicksync/puppet/'
 
-# This is from athena bitbucket
-export PATH=$PATH:~/docker-utils/bin
-
 
 ## autocompletion (NOTE: only works with newer version of bash)
 bind 'set show-all-if-ambiguous on'

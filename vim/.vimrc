@@ -30,7 +30,9 @@ filetype plugin indent on    " required
 " Settings I like
 let mapleader = ","
 
-colorscheme default
+syntax enable
+colorscheme default  "looks nice - playing with Solarized for fun
+
 set nohlsearch       ""don't highlight searches
 set background=dark  ""make text look prettier
 set ignorecase       ""when searching, ignore case

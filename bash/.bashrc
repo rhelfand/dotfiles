@@ -22,7 +22,8 @@ case "$TERM" in
 esac
 
 if [ "$color_prompt" = yes ]; then
-    PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] '
+    # Use my crazy color_prompt
+    . "$HOME/.bash_prompt"
 else
     PS1="\u@\h:\w>"
 fi

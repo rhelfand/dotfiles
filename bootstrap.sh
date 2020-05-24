@@ -7,11 +7,13 @@
 
 ## What's my OS?
 if [[ "$OSTYPE" =~ "linux" ]] ; then
+  # We're a Linux host!
   # TODO apt vs rpm?
   # Install some packages
   [[ -x "$(command -v stow)" ]] || sudo apt install stow
 
 elif [[ "$OSTYPE" =~ "darwin" ]]; then
+  # We're on a Mac!
   # First, install brew!
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -28,10 +30,10 @@ fi
 
 # Now, use stow to install dotfiles
 # Move orig files out of the way first (this is kind of ugly)
-[[ -d "$HOME/origdotfiles" ]] || mkdir $HOME/origdotfiles
+[[ -d "$HOME/origdotfiles" ]] || mkdir "$HOME/origdotfiles"
 for ORIG_FILE in .bash_profile .bashrc .vimrc .bcrc .gitconfig .gitignore_global ; do
   if [[ -r "$HOME/$ORIG_FILE" ]] ; then
-    mv $HOME/$ORIG_FILE $HOME/origdotfiles/${ORIG_FILE}.`date '+%Y%m%d%H%M%S'`
+    mv "$HOME/$ORIG_FILE" "$HOME/origdotfiles/${ORIG_FILE}.$(date '+%Y%m%d%H%M%S')"
   fi
 done
 
@@ -41,6 +43,6 @@ stow vim
 stow git
 
 # Setup vim plugins.  First install Vundle:
-[[ -r "$HOME/.vim/bundle/Vundle.vim" ]] || git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+[[ -r "$HOME/.vim/bundle/Vundle.vim" ]] || git clone https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
 echo "Launch vim and run ':PluginInstall' to configure Vim plugins."
 echo ""

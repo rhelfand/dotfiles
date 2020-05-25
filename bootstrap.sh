@@ -5,7 +5,7 @@
 ## my environment on a Mac or Linux host.
 
 
-# What's my OS?
+## What's my OS?
 if [[ "$OSTYPE" =~ "linux" ]] ; then
   # We're a Linux host!
   # TODO apt vs rpm?
@@ -15,7 +15,7 @@ if [[ "$OSTYPE" =~ "linux" ]] ; then
 elif [[ "$OSTYPE" =~ "darwin" ]]; then
   # We're on a Mac!
   # First, install brew!
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  [[ -x "$(command -v brew)" ]] || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   # Make sure we’re using the latest Homebrew.
   brew update
@@ -32,7 +32,7 @@ else
 
 fi
 
-# Trying to make this idempotently stow my files
+## Trying to make this idempotently stow my files
 STOWPKGS="bash bc vim git"
 
 [[ -d "$HOME/origdotfiles" ]] || mkdir "$HOME/origdotfiles"
@@ -52,7 +52,10 @@ for STOWPKG in $STOWPKGS ; do
   fi
 done
 
-# Setup vim plugins.  First install Vundle:
-[[ -r "$HOME/.vim/bundle/Vundle.vim" ]] || git clone https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
-echo "Launch vim and run ':PluginInstall' to configure Vim plugins."
-echo ""
+## The vim plugins from my .vimrc use Vundle for management, so let's install
+if [[ ! -r "$HOME/.vim/bundle/Vundle.vim" ]] ; then
+  git clone https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"
+  echo "Launch vim and run ':PluginInstall' to configure Vim plugins."
+else
+  echo "Warning:  Vundle is already installed.  Skipping."
+fi

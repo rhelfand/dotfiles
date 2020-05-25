@@ -5,7 +5,7 @@
 ## my environment on a Mac or Linux host.
 
 
-## What's my OS?
+# What's my OS?
 if [[ "$OSTYPE" =~ "linux" ]] ; then
   # We're a Linux host!
   # TODO apt vs rpm?
@@ -26,21 +26,31 @@ elif [[ "$OSTYPE" =~ "darwin" ]]; then
   # Install my applications and casks
   brew bundle
 
+else
+  echo "Error:  Can't determine OS.  Exiting."
+  exit 1
+
 fi
 
-# Now, use stow to install dotfiles
-# Move orig files out of the way first (this is kind of ugly)
+# Trying to make this idempotently stow my files
+STOWPKGS="bash bc vim git"
+
 [[ -d "$HOME/origdotfiles" ]] || mkdir "$HOME/origdotfiles"
-for ORIG_FILE in .bash_profile .bashrc .vimrc .bcrc .gitconfig .gitignore_global ; do
-  if [[ -r "$HOME/$ORIG_FILE" ]] ; then
-    mv "$HOME/$ORIG_FILE" "$HOME/origdotfiles/${ORIG_FILE}.$(date '+%Y%m%d%H%M%S')"
+for STOWPKG in $STOWPKGS ; do
+  echo "Using stow to manage dotfiles for $STOWPKG ..."
+  # If stow errors out, a file or link already exists
+  if ! stow "$STOWPKG" > /dev/null 2>&1 ; then
+    echo "Warning: Something in $STOWPKG is conflicting with stow.  Trying to fix ..."
+    for ORIG_FILE in $(ls -A "$(pwd)"/"$STOWPKG") ; do
+      mv "$HOME/$ORIG_FILE" "$HOME/origdotfiles/${ORIG_FILE}.$(date '+%Y%m%d%H%M%S')"
+    done
+    # Now try it again.  This is ugly I know.
+    if ! stow "$STOWPKG" ; then
+      echo "Error: stow is unable to install $STOWPKG"
+      exit 1
+    fi
   fi
 done
-
-stow bash
-stow bc
-stow vim
-stow git
 
 # Setup vim plugins.  First install Vundle:
 [[ -r "$HOME/.vim/bundle/Vundle.vim" ]] || git clone https://github.com/VundleVim/Vundle.vim.git "$HOME/.vim/bundle/Vundle.vim"

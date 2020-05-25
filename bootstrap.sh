@@ -15,7 +15,7 @@ if [[ "$OSTYPE" =~ "linux" ]] ; then
 elif [[ "$OSTYPE" =~ "darwin" ]]; then
   # We're on a Mac!
   # First, install brew!
-  [[ -x "$(command -v brew)" ]] || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  [[ -x "$(command -v brew)" ]] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
   # Make sure we’re using the latest Homebrew.
   brew update

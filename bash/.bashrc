@@ -30,12 +30,16 @@ fi
 
 
 ## History shenanigans:
-[[ -d ~/log ]] || mkdir ~/log
-HISTSIZE=3000
-shopt -s histappend
-# Testing a different method, as re-reading history starts to get noticably slow after a while.
+# The below command, along with 'shopt' worked to sync hisstory between tabs but it gets slow and I don't really need it
 # PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
-PROMPT_COMMAND=' history -a; history -n; echo "$(date '+%Y-%m-%d.%H:%M:%S') $(pwd) $(history 1)" >> ~/log/bash-history-$(date '+%Y-%m').log'
+# I tried the below commands because I thought it would be more tidy, but I think I prefer it simppler and more standard
+#[[ -d ~/log ]] || mkdir ~/log
+# PROMPT_COMMAND=' history -a; history -n; echo "$(date '+%Y-%m-%d.%H:%M:%S') $(pwd) $(history 1)" >> ~/log/bash-history-$(date '+%Y-%m').log'
+shopt -s histappend
+HISTSIZE=1000
+HISTFILESIZE=500000
+HISTTIMEFORMAT='%F %T '
+PROMPT_COMMAND='history -a'
 
 
 ## Misc things that I like:

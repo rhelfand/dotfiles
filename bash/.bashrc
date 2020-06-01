@@ -14,6 +14,8 @@ pathmunge () {
 pathmunge ~/scripts after
 pathmunge /usr/local/opt/node@6/bin after
 pathmunge ~/.rvm/bin after
+pathmunge /sbin after
+pathmunge /usr/sbin after
 
 
 ## Use color in my prompt because I think it's cool
@@ -39,7 +41,11 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=500000
 HISTTIMEFORMAT='%F %T '
+# Sort of specific to athenahealth but might be useful for other places utilizing jumphosts and shared home dirs
 PROMPT_COMMAND='history -a'
+if [[ $(hostname -s) =~ "bastion" ]] ; then
+  HISTFILE="$HOME/.bash_history_$(hostname -s)"
+fi
 
 
 ## Misc things that I like:
@@ -77,9 +83,20 @@ export P4PORT=perforce.athenahealth.com:1666
 export P4CLIENT=rhelfand-mbp15
 export P4EDITOR=vim
 export AWS_PROFILE=saml
+# Possibly for harr?  I don't really know/remember
+export INTRANET_HOME="$P4_HOME/intranet"
+export MASTER_ROOT_INSTANCE=DB1
+export FILEROOT=/mp/var
+export ISDEVSERVER=Y
 
+# Some aliases I use
 alias b='ssh bastion100.athenahealth.com'
 alias cdpuppet='cd ~/p4/quicksync/puppet/'
+
+# athena-specific PATHs
+pathmunge /usr/local/athena/techops/prodsys/tools after
+pathmunge /usr/local/athena/techops/coredev/bin after
+pathmunge /usr/local/bin/athena after
 
 
 ## autocompletion (NOTE: only works with newer version of bash)

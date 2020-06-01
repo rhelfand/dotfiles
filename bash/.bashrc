@@ -41,9 +41,10 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=500000
 HISTTIMEFORMAT='%F %T '
-# Sort of specific to athenahealth but might be useful for other places utilizing jumphosts and shared home dirs
 PROMPT_COMMAND='history -a'
-if [[ $(hostname -s) =~ "bastion" ]] ; then
+# Sort of specific to athenahealth but might be useful for other places utilizing jumphosts and shared home dirs
+# If my home dir is NFS, then I am assuming I have a shared home dir and I'll use different HISTFILES per host
+if [[ $(df -PT . | awk '{print $2}' | grep -v Type) = "nfs" ]] ; then
   HISTFILE="$HOME/.bash_history_$(hostname -s)"
 fi
 

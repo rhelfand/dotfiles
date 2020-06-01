@@ -3,17 +3,24 @@
 
 ## This script is used to bootstrap Brew and setup
 ## my environment on a Mac or Linux host.
+## I assume you're in $HOME/dotfiles to begin.
 
 
 ## What's my OS?
 if [[ "$OSTYPE" =~ "linux" ]] ; then
-  # We're a Linux host!
-  # TODO apt vs rpm?
-  # Install some packages
-  [[ -x "$(command -v stow)" ]] || sudo apt install stow
+  # We're a Linux host!  I'll just install GNU Stow locally
+  if [[ ! -x "$(command -v stow)" ]] ; then
+    stowversion="2.3.1"
+    [[ -d "$HOME/local" ]] || mkdir "$HOME/local"
+    curl -O http://ftp.gnu.org/gnu/stow/stow-${stowversion}.tar.gz
+    tar xzf stow-${stowversion}.tar.gz
+    cd stow-${stowversion} || exit 1
+    ./configure --prefix="$HOME"/local && make && make install && PATH=$PATH:$HOME/local/bin
+    cd ..
+  fi
 
 elif [[ "$OSTYPE" =~ "darwin" ]]; then
-  # We're on a Mac!
+  # We're on a Mac!  I'm assuming this is *my* mac and I can install what I want
   # First, install brew!
   [[ -x "$(command -v brew)" ]] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 

@@ -18,19 +18,6 @@ pathmunge /sbin after
 pathmunge /usr/sbin after
 
 
-## Use color in my prompt because I think it's cool
-case "$TERM" in
-    xterm|xterm-color|*-256color) color_prompt=yes;;
-esac
-
-if [ "$color_prompt" = yes ]; then
-    # Use my crazy color_prompt
-    . "$HOME/.bash_prompt"
-else
-    PS1="\u@\h:\w>"
-fi
-
-
 ## History shenanigans:
 # The below command, along with 'shopt' worked to sync hisstory between tabs but it gets slow and I don't really need it
 # PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
@@ -124,3 +111,16 @@ fi
 
 ## Cool thing that shows some system stats
 [[ -x $(command -v neofetch) ]] && neofetch
+
+
+## Use color in my prompt because I think it's cool
+case "$TERM" in
+    xterm|xterm-color|*-256color) color_prompt=yes;;
+esac
+
+if [ "$color_prompt" = yes ]; then
+    # Use my crazy color_prompt
+    . "$HOME/.bash_prompt"
+else
+    PS1="\u@\h:\w>"
+fi

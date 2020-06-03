@@ -68,7 +68,7 @@ if tput setaf 1 &> /dev/null; then
 	cyan=$(tput setaf 37);
 	green=$(tput setaf 64);
 	orange=$(tput setaf 166);
-	purple=$(tput setaf 125);
+	purple=$(tput setaf 135);
 	red=$(tput setaf 124);
 	violet=$(tput setaf 61);
 	white=$(tput setaf 15);
@@ -92,14 +92,14 @@ fi;
 if [[ "${USER}" == "root" ]]; then
 	userStyle="${red}";
 else
-	userStyle="${orange}";
+	userStyle="${violet}";
 fi;
 
 # Highlight the hostname when connected via SSH.
 if [[ "${SSH_TTY}" ]]; then
-	hostStyle="${bold}${red}";
+	hostStyle="${bold}${purple}";
 else
-	hostStyle="${yellow}";
+	hostStyle="${purple}";
 fi;
 
 exit_code() {

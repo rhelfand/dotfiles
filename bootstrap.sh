@@ -48,8 +48,9 @@ for STOWPKG in $STOWPKGS ; do
   # If stow errors out, a file or link already exists
   if ! stow "$STOWPKG" > /dev/null 2>&1 ; then
     echo "Warning: Something in $STOWPKG is conflicting with stow.  Trying to fix ..."
-    for ORIG_FILE in $(ls -A "$(pwd)"/"$STOWPKG") ; do
-      mv "$HOME/$ORIG_FILE" "$HOME/origdotfiles/${ORIG_FILE}.$(date '+%Y%m%d%H%M%S')"
+    #for ORIG_FILE in $(ls -A "$(pwd)"/"$STOWPKG") ; do
+    for ORIG_FILE in "$(PWD)"/bash/.[a-z]* ; do
+      [[ -f "$HOME/$ORIG_FILE" ]] && mv "$HOME/$ORIG_FILE" "$HOME/origdotfiles/${ORIG_FILE}.$(date '+%Y%m%d%H%M%S')"
     done
     # Now try it again.  This is ugly I know.
     if ! stow "$STOWPKG" ; then

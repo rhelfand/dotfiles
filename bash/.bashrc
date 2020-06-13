@@ -48,6 +48,8 @@ alias wa='ssh-add -K ~/.ssh/id_rsa'
 alias ls='ls -G'
 alias rm='rm -i'
 alias cp='cp -i'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
 alias c='cal -3'
 alias sortdisk='sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done'
 alias showzombies="ps xaw -o state -o ppid | grep Z | grep -v PID | awk '{print $2}'"

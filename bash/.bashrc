@@ -63,7 +63,7 @@ alias dstop='docker stop $(docker ps -a -q)'
 alias dremove='docker rm $(docker ps -a -q)'
 alias gla='git log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --branches --remotes'
 alias gl='git log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
-alias hl='history -r'
+alias hr='history -r'
 
 
 ## Crazy alias to setup tmux / iTerm2 / ssh

@@ -25,7 +25,8 @@ pathmunge /usr/sbin after
 #[[ -d ~/log ]] || mkdir ~/log
 # PROMPT_COMMAND=' history -a; history -n; echo "$(date '+%Y-%m-%d.%H:%M:%S') $(pwd) $(history 1)" >> ~/log/bash-history-$(date '+%Y-%m').log'
 shopt -s histappend
-HISTSIZE=1000
+HISTCONTROL=ignoredups
+HISTSIZE=10000
 HISTFILESIZE=500000
 HISTTIMEFORMAT='%F %T '
 PROMPT_COMMAND='history -a'

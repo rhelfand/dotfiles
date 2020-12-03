@@ -74,7 +74,6 @@ alias ta='export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock; LD_LIBRARY_PATH=$HOME/l
 export P4PORT=perforce.athenahealth.com:1666
 export P4CLIENT=rhelfand-mbp15
 export P4EDITOR=vim
-export AWS_PROFILE=saml
 # Possibly for harr?  I don't really know/remember
 export INTRANET_HOME="$P4_HOME/intranet"
 export MASTER_ROOT_INSTANCE=DB1
@@ -128,3 +127,5 @@ if [ "$color_prompt" = yes ]; then
 else
     PS1="\u@\h:\w>"
 fi
+
+complete -C /usr/local/bin/terraform terraform

@@ -13,7 +13,6 @@ pathmunge () {
 
 pathmunge ~/scripts after
 pathmunge /usr/local/opt/node@6/bin after
-pathmunge ~/.rvm/bin after
 pathmunge /sbin after
 pathmunge /usr/sbin after
 
@@ -99,10 +98,6 @@ bind 'set menu-complete-display-prefix on'
 ## Git path completion - Need to brew install git and bash-completion which we should be doing
 ## TODO Make my bashrc more OS agnostic maybe?
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-
-
-## rvm things
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 
 ## pyenv things

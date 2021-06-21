@@ -102,7 +102,9 @@ bind 'set menu-complete-display-prefix on'
 
 ## pyenv things
 if [ -x "$(command -v pyenv)" ] ; then
-  eval "$(pyenv init -)"
+  export PYENV_ROOT="$HOME/.pyenv"
+  pathmunge $PYENV_ROOT/bin before
+  eval "$(pyenv init --path)"
   eval "$(pyenv virtualenv-init -)"
 fi
 

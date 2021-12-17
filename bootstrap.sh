@@ -33,6 +33,13 @@ elif [[ "$OSTYPE" =~ "darwin" ]]; then
   # Install my applications and casks
   brew bundle
 
+  # Set a couple of defaults via CLI
+  defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+  defaults write NSGlobalDomain KeyRepeat -int 1
+  defaults write NSGlobalDomain InitialKeyRepeat -int 10
+  defaults write com.googlecode.iterm2 PinchToChangeFontSizeDisabled -bool true
+  defaults write com.apple.dock showhidden -bool true
+
 else
   echo "Error:  Can't determine OS.  Exiting."
   exit 1

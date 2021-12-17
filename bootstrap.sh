@@ -39,6 +39,10 @@ elif [[ "$OSTYPE" =~ "darwin" ]]; then
   defaults write NSGlobalDomain InitialKeyRepeat -int 10
   defaults write com.googlecode.iterm2 PinchToChangeFontSizeDisabled -bool true
   defaults write com.apple.dock showhidden -bool true
+  defaults write com.apple.finder AppleShowAllFiles YES
+  defaults write com.apple.finder ShowPathbar -bool true
+  defaults write com.apple.finder ShowStatusBar -bool true
+
 
 else
   echo "Error:  Can't determine OS.  Exiting."

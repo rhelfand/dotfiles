@@ -39,6 +39,7 @@ fi
 ## Misc things that I like:
 set -o vi
 LESS="-XF"
+SYSTEMD_LESS="FRXMK"
 BC_ENV_ARGS=$HOME/.bcrc
 
 alias steal_screen='screen -d -R'
@@ -66,7 +67,7 @@ alias hr='history -r'
 
 
 ## Crazy alias to setup tmux / iTerm2 / ssh
-alias ta='export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock; LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH; ($HOME/local/bin/tmux ls | grep -vq attached && $HOME/local/bin/tmux -CC attach) || $HOME/local/bin/tmux -CC new -A -s main'
+alias ta='export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock; LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH; $HOME/local/bin/tmux -CC new-session -A -s main'
 
 
 ## Things that are really only specific to athenahealth
@@ -95,10 +96,10 @@ bind 'TAB:menu-complete'
 bind 'set menu-complete-display-prefix on'
 
 
-## Git path completion - Need to brew install git and bash-completion which we should be doing
 ## TODO Make my bashrc more OS agnostic maybe?
+## PATH and bash completion things - Need to brew install git and bash-completion which we should be doing
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-
+[[ -r "/usr/local/bin/terraform" ]] && complete -C /usr/local/bin/terraform terraform
 
 ## pyenv things
 if [ -x "$(command -v pyenv)" ] ; then
@@ -125,4 +126,3 @@ else
     PS1="\u@\h:\w>"
 fi
 
-complete -C /usr/local/bin/terraform terraform

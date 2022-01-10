@@ -44,8 +44,8 @@ BC_ENV_ARGS=$HOME/.bcrc
 
 alias steal_screen='screen -d -R'
 alias h='ssh -A -t www.rhelfand.org ssh -A -t rhelfand.dyndns.org'
-alias ha='ssh-add -K ~/.ssh/id_rsa_home'
-alias wa='ssh-add -K ~/.ssh/id_rsa'
+alias ha='ssh-add --apple-use-keychain ~/.ssh/id_rsa_home'
+alias wa='ssh-add --apple-use-keychain ~/.ssh/id_rsa'
 alias ls='ls -G'
 alias rm='rm -i'
 alias cp='cp -i'

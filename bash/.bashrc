@@ -11,6 +11,17 @@ pathmunge () {
         fi
 }
 
+## New things for Brew
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
+pathmunge /opt/homebrew/bin before
+pathmunge /opt/homebrew/sbin before
+
+## Other PATH things I use
 pathmunge ~/scripts after
 pathmunge /usr/local/opt/node@6/bin after
 pathmunge /sbin after

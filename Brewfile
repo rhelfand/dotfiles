@@ -2,7 +2,7 @@
 cask_args appdir: '/Applications'
 
 # install packages
-tap 'caskroom/homebrew-cask' || true
+tap 'homebrew/cask' || true
 
 brew 'tree'
 brew 'python3'
@@ -13,7 +13,6 @@ brew 'openssl'
 brew 'stow'
 brew 'git'
 brew 'bash-completion'
-brew 'kubernetes-cli'
 brew 'vim'
 brew 'shellcheck'
 brew 'neofetch'
@@ -26,3 +25,7 @@ cask 'google-chrome'
 cask 'iterm2'
 cask 'postman'
 cask 'spotify'
+cask 'bettertouchtool'
+cask 'fantastical'
+cask 'slack'
+cask 'bitwarden'

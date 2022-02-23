@@ -24,6 +24,14 @@ elif [[ "$OSTYPE" =~ "darwin" ]]; then
   # First, install brew!
   [[ -x "$(command -v brew)" ]] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+  # Looks like they changed the PATH of brew
+  export HOMEBREW_PREFIX="/opt/homebrew";
+  export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+  export HOMEBREW_REPOSITORY="/opt/homebrew";
+  export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+  export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH";
+
   # Make sure we’re using the latest Homebrew.
   brew update
 

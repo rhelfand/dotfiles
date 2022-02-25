@@ -19,6 +19,7 @@ brew 'neofetch'
 brew 'pyenv'
 brew 'pyenv-virtualenv'
 brew 'bash'
+brew 'the_silver_searcher'
 
 # Casks
 cask 'google-chrome'

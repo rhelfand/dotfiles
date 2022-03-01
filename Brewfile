@@ -20,6 +20,9 @@ brew 'pyenv'
 brew 'pyenv-virtualenv'
 brew 'bash'
 brew 'the_silver_searcher'
+brew 'terraform'
+brew 'terragrunt'
+brew 'go'
 
 # Casks
 cask 'google-chrome'

@@ -49,9 +49,9 @@ fi
 
 ## Misc things that I like:
 set -o vi
-LESS="-XF"
-SYSTEMD_LESS="FRXMK"
-BC_ENV_ARGS=$HOME/.bcrc
+export LESS="-XF"
+export SYSTEMD_LESS="FRXMK"
+export BC_ENV_ARGS=$HOME/.bcrc
 
 alias steal_screen='screen -d -R'
 alias h='ssh -A -t www.rhelfand.org ssh -A -t rhelfand.dyndns.org'

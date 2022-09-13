@@ -5,8 +5,6 @@ cask_args appdir: '/Applications'
 tap 'homebrew/cask' || true
 
 brew 'tree'
-brew 'python3'
-brew 'pipenv'
 brew 'curl'
 brew 'coreutils'
 brew 'openssl'
@@ -16,13 +14,8 @@ brew 'bash-completion'
 brew 'vim'
 brew 'shellcheck'
 brew 'neofetch'
-brew 'pyenv'
-brew 'pyenv-virtualenv'
 brew 'bash'
 brew 'the_silver_searcher'
-brew 'terraform'
-brew 'terragrunt'
-brew 'go'
 
 # Casks
 cask 'google-chrome'

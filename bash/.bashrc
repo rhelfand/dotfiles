@@ -118,12 +118,12 @@ bind 'set menu-complete-display-prefix on'
 [[ -r "/usr/local/bin/terraform" ]] && complete -C /usr/local/bin/terraform terraform
 
 ## pyenv things
-if [ -x "$(command -v pyenv)" ] ; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  pathmunge $PYENV_ROOT/bin before
-  eval "$(pyenv init --path)"
-  eval "$(pyenv virtualenv-init -)"
-fi
+#if [ -x "$(command -v pyenv)" ] ; then
+#  export PYENV_ROOT="$HOME/.pyenv"
+#  pathmunge $PYENV_ROOT/bin before
+#  eval "$(pyenv init --path)"
+#  eval "$(pyenv virtualenv-init -)"
+#fi
 
 
 ## Cool thing that shows some system stats

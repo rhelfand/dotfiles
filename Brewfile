@@ -16,6 +16,10 @@ brew 'shellcheck'
 brew 'neofetch'
 brew 'bash'
 brew 'the_silver_searcher'
+brew 'telnet'
+brew 'ipcalc'
+brew 'terraform'
+brew 'terragrunt'
 
 # Casks
 cask 'google-chrome'

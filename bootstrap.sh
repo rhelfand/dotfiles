@@ -24,13 +24,14 @@ elif [[ "$OSTYPE" =~ "darwin" ]]; then
   # First, install brew!
   [[ -x "$(command -v brew)" ]] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
-  # Looks like they changed the PATH of brew
-  export HOMEBREW_PREFIX="/opt/homebrew";
-  export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-  export HOMEBREW_REPOSITORY="/opt/homebrew";
-  export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-  export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH";
+  # Add Homebrew to $PATH and set useful env vars
+  if command -v /opt/homebrew/bin/brew &> /dev/null; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif command -v /usr/local/bin/brew &> /dev/null; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  else
+    HOMEBREW_PREFIX=""
+  fi
 
   # Make sure we’re using the latest Homebrew.
   brew update
@@ -40,6 +41,12 @@ elif [[ "$OSTYPE" =~ "darwin" ]]; then
 
   # Install my applications and casks
   brew bundle
+
+  # Use the newly installed version of bash
+  if ! grep -Fq "$HOMEBREW_PREFIX/bin/bash" /etc/shells; then
+    echo "$HOMEBREW_PREFIX/bin/bash" | sudo tee -a /etc/shells;
+    chsh -s "$HOMEBREW_PREFIX/bin/bash";
+  fi;
 
   # Set a couple of defaults via CLI
   defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false

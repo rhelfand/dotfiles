@@ -11,15 +11,15 @@ pathmunge () {
         fi
 }
 
-## New things for Brew
-export HOMEBREW_PREFIX="/opt/homebrew";
-export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-export HOMEBREW_REPOSITORY="/opt/homebrew";
-export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+# Add Homebrew to $PATH and set useful env vars
+if command -v /opt/homebrew/bin/brew &> /dev/null; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif command -v /usr/local/bin/brew &> /dev/null; then
+  eval "$(/usr/local/bin/brew shellenv)"
+else
+  HOMEBREW_PREFIX=""
+fi
 
-pathmunge /opt/homebrew/bin before
-pathmunge /opt/homebrew/sbin before
 
 ## Other PATH things I use
 pathmunge ~/scripts after
@@ -28,18 +28,15 @@ pathmunge /sbin after
 pathmunge /usr/sbin after
 
 
-## History shenanigans:
-# The below command, along with 'shopt' worked to sync hisstory between tabs but it gets slow and I don't really need it
-# PROMPT_COMMAND="history -a;history -c;history -r;$PROMPT_COMMAND"
-# I tried the below commands because I thought it would be more tidy, but I think I prefer it simppler and more standard
-#[[ -d ~/log ]] || mkdir ~/log
-# PROMPT_COMMAND=' history -a; history -n; echo "$(date '+%Y-%m-%d.%H:%M:%S') $(pwd) $(history 1)" >> ~/log/bash-history-$(date '+%Y-%m').log'
+## History shenanigans (I keep changing this, can't decide what I like):
 shopt -s histappend
-HISTCONTROL=ignoredups
-HISTSIZE=10000
-HISTFILESIZE=500000
-HISTTIMEFORMAT='%F %T '
-PROMPT_COMMAND='history -a'
+HISTCONTROL=ignoredups:erasedups
+HISTSIZE=100000
+HISTFILESIZE=100000
+## HISTTIMEFORMAT='%F %T '
+PROMPT_COMMAND='history -n; history -w; history -c; history -r'
+
+
 # Sort of specific to athenahealth but might be useful for other places utilizing jumphosts and shared home dirs
 # If my home dir is NFS, then I am assuming I have a shared home dir and I'll use different HISTFILES per host
 if [[ $(df -PT . | awk '{print $2}' | grep -v Type) = "nfs" ]] ; then

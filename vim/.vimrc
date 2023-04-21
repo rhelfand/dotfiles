@@ -42,9 +42,9 @@ set paste            ""don't auto-indent
 set laststatus=2     ""the statusbar at the bottom
 set tabstop=4        ""default is 8
 set wildmenu         ""tab completes for searching
-set nu               ""turn on line numbers
-set nu rnu           ""turn on relative line numbers
-
+"" I tried the line number thing, it drove me crazy
+"" set nu               ""turn on line numbers
+"" set nu rnu           ""turn on relative line numbers
 "" This was too much, took too long under p4
 ""set path+=**         ""let vim search in to subfolders
 

@@ -94,7 +94,7 @@ export FILEROOT=/mp/var
 export ISDEVSERVER=Y
 
 # Some aliases I use
-alias b='ssh bastion100.athenahealth.com'
+alias b='ssh bastion1000.athenahealth.com'
 alias cdpuppet='cd ~/p4/quicksync/puppet/'
 
 # athena-specific PATHs

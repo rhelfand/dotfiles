@@ -111,7 +111,7 @@ bind 'set menu-complete-display-prefix on'
 
 ## TODO Make my bashrc more OS agnostic maybe?
 ## PATH and bash completion things - Need to brew install git and bash-completion which we should be doing
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 [[ -r "/usr/local/bin/terraform" ]] && complete -C /usr/local/bin/terraform terraform
 
 ## pyenv things

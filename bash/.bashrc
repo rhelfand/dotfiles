@@ -124,7 +124,7 @@ bind 'set menu-complete-display-prefix on'
 
 
 ## Cool thing that shows some system stats
-[[ -x $(command -v neofetch) ]] && neofetch
+[[ -x $(command -v fastfetch) ]] && fastfetch
 
 
 ## Use color in my prompt because I think it's cool

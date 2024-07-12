@@ -74,8 +74,8 @@ alias findbigfiles="find . -size +$1k -exec du -h {} \;"
 alias sr="sudo ssh $1"
 alias dstop='docker stop $(docker ps -a -q)'
 alias dremove='docker rm $(docker ps -a -q)'
-alias gla='git log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit --branches --remotes'
-alias gl='git log --graph --pretty=format:'\''%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'\'' --abbrev-commit'
+alias gla='git log --pretty=medium --graph --abbrev-commit --all'
+alias gl='git log --oneline --graph --abbrev-commit --all'
 alias hr='history -r'
 
 

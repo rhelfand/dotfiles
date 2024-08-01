@@ -3,9 +3,9 @@ cask_args appdir: '/Applications'
 
 # install packages
 tap 'homebrew/cask' || true
+tap 'hashicorp/tap' || true
 
 brew 'tree'
-brew 'curl'
 brew 'coreutils'
 brew 'openssl'
 brew 'stow'

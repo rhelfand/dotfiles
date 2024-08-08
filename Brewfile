@@ -18,7 +18,7 @@ brew 'bash'
 brew 'the_silver_searcher'
 brew 'telnet'
 brew 'ipcalc'
-brew 'terraform'
+brew 'hashicorp/tap/terraform'
 brew 'terragrunt'
 
 # Casks

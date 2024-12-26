@@ -83,26 +83,6 @@ alias hr='history -r'
 alias ta='export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock; LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH; $HOME/local/bin/tmux -CC new-session -A -s main'
 
 
-## Things that are really only specific to athenahealth
-export P4PORT=perforce.athenahealth.com:1666
-export P4CLIENT=rhelfand-mbp15
-export P4EDITOR=vim
-# Possibly for harr?  I don't really know/remember
-export INTRANET_HOME="$P4_HOME/intranet"
-export MASTER_ROOT_INSTANCE=DB1
-export FILEROOT=/mp/var
-export ISDEVSERVER=Y
-
-# Some aliases I use
-alias b='ssh bastion1000.athenahealth.com'
-alias cdpuppet='cd ~/p4/quicksync/puppet/'
-
-# athena-specific PATHs
-pathmunge /usr/local/athena/techops/prodsys/tools after
-pathmunge /usr/local/athena/techops/coredev/bin after
-pathmunge /usr/local/bin/athena after
-
-
 ## autocompletion (NOTE: only works with newer version of bash)
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'

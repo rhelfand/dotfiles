@@ -37,7 +37,7 @@ HISTFILESIZE=100000
 PROMPT_COMMAND='history -n; history -w; history -c; history -r'
 
 
-# Sort of specific to athenahealth but might be useful for other places utilizing jumphosts and shared home dirs
+# Sort of specific to work but might be useful for other places utilizing jumphosts and shared home dirs
 # If my home dir is NFS, then I am assuming I have a shared home dir and I'll use different HISTFILES per host
 if [[ $(df -PT . | awk '{print $2}' | grep -v Type) = "nfs" ]] ; then
   HISTFILE="$HOME/.bash_history_$(hostname -s)"

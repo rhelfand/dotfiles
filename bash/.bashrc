@@ -1,4 +1,6 @@
 # User specific aliases and functions
+# If not running interactively, don't do anything
+[[ $- == *i* ]] || return
 
 ## Function to nicely append or prepend PATH.  I stole this from google
 pathmunge () {

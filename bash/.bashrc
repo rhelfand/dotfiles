@@ -1,6 +1,5 @@
+# shellcheck shell=bash
 # User specific aliases and functions
-# If not running interactively, don't do anything
-[[ $- == *i* ]] || return
 
 ## Function to nicely append or prepend PATH.  I stole this from google
 pathmunge () {
@@ -18,10 +17,7 @@ if command -v /opt/homebrew/bin/brew &> /dev/null; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 elif command -v /usr/local/bin/brew &> /dev/null; then
   eval "$(/usr/local/bin/brew shellenv)"
-else
-  HOMEBREW_PREFIX=""
 fi
-
 
 ## Other PATH things I use
 pathmunge ~/scripts after
@@ -68,20 +64,16 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias c='cal -3'
 alias sortdisk='sort -n | while read size fname; do for unit in k M G T P E Z Y; do if [ $size -lt 1024 ]; then echo -e "${size}${unit}\t${fname}"; break; fi; size=$((size/1024)); done; done'
-alias showzombies="ps xaw -o state -o ppid | grep Z | grep -v PID | awk '{print $2}'"
-alias kickpuppet="sudo service puppet restart && sudo tail -f /var/log/messages"
 alias checknagios="sudo /usr/sbin/nagios -v /etc/nagios/nagios.cfg"
-alias p4diff="P4DIFF=vimdiff p4 diff"
-alias findbigfiles="find . -size +$1k -exec du -h {} \;"
-alias sr="sudo ssh $1"
 alias dstop='docker stop $(docker ps -a -q)'
 alias dremove='docker rm $(docker ps -a -q)'
 alias gla='git log --pretty=medium --graph --abbrev-commit --all'
 alias gl='git log --oneline --graph --abbrev-commit --all'
+alias gp='git pull && git remote prune origin'
 alias hr='history -r'
 
-
-## Crazy alias to setup tmux / iTerm2 / ssh
+## Work stuff
+alias b='ssh bastion51000.athenahealth.com'
 alias ta='export SSH_AUTH_SOCK=$HOME/.ssh/ssh_auth_sock; LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH; $HOME/local/bin/tmux -CC new-session -A -s main'
 
 
@@ -95,14 +87,6 @@ bind 'set menu-complete-display-prefix on'
 ## PATH and bash completion things - Need to brew install git and bash-completion which we should be doing
 [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 [[ -r "/usr/local/bin/terraform" ]] && complete -C /usr/local/bin/terraform terraform
-
-## pyenv things
-#if [ -x "$(command -v pyenv)" ] ; then
-#  export PYENV_ROOT="$HOME/.pyenv"
-#  pathmunge $PYENV_ROOT/bin before
-#  eval "$(pyenv init --path)"
-#  eval "$(pyenv virtualenv-init -)"
-#fi
 
 
 ## Cool thing that shows some system stats

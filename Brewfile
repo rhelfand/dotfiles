@@ -6,6 +6,7 @@ tap 'homebrew/cask' || true
 tap 'hashicorp/tap' || true
 
 brew 'tree'
+brew 'jq'
 brew 'coreutils'
 brew 'openssl'
 brew 'stow'
@@ -16,10 +17,13 @@ brew 'shellcheck'
 brew 'fastfetch'
 brew 'bash'
 brew 'the_silver_searcher'
+brew 'rg'
 brew 'telnet'
 brew 'ipcalc'
 brew 'hashicorp/tap/terraform'
-brew 'terragrunt'
+brew 'kubernetes-cli'
+brew 'minikube'
+brew 'yq'
 
 # Casks
 cask 'google-chrome'
